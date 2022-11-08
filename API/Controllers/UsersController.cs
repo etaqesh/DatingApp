@@ -18,7 +18,6 @@ namespace API.Controllers
         public UsersController(DataContext context)
         {
             _context = context;  
-            //Test Commit
         }
 
         //api/users
