@@ -26,11 +26,13 @@ namespace API
             });
 
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Middlewares 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -41,6 +43,8 @@ namespace API
 
             app.UseRouting();
 
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));//To Solve CORS Issue
+                                                                                                                 //policy => variable 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
